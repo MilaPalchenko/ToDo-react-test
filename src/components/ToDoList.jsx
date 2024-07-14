@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import '../styles/ToDo/style.css'
+import IconUp from '../assets/arrow-up.png'
+import IconDown from '../assets/arrow-down.png'
+import IconTrashBin from '../assets/red-trash-can-icon.png'
 
 function ToDoList() {
 
@@ -17,11 +20,11 @@ function ToDoList() {
     function addTask() {
         //trim to prevent new space 
         if (newTask.trim() !== "") {
-            setTasks(t => [...t, newTask]);
+            setTasks(t => [newTask, ...t ]);
             setNewTask("");
 
             //update local data
-            localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
+            localStorage.setItem('tasks', JSON.stringify([newTask, ...tasks]));
         }
     }
 
@@ -82,7 +85,7 @@ function ToDoList() {
                                 onChange={handleInputChange}
                                 className='input-bar'
                             />
-                            <div className="label-line">Enter your task..</div>
+                            <div className="label-line">Enter your task</div>
                         </div>
                     </div>
                 </div>
@@ -103,18 +106,18 @@ function ToDoList() {
 
                         <button className="move-button"
                             onClick={() => moveTaskUp(index)}>
-                            <img src="./src/assets/arrow-up.png" alt=""
+                            <img src={IconUp} alt=""
                                 height="40px" />
                         </button>
                         <button className="move-button"
                             onClick={() => moveTaskDown(index)}>
-                            <img src="./src/assets/arrow-down.png" alt=""
+                            <img src={IconDown} alt=""
                                 height="40px"
                             />
                         </button>
                         <button className="delete-button"
                             onClick={() => deleteTask(index)}>
-                            <img src="./src/assets/red-trash-can-icon.png" alt=""
+                            <img src={IconTrashBin} alt=""
                                 height="30px" />
                         </button>
                     </li>)}

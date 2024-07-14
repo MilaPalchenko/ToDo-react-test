@@ -30,7 +30,6 @@ button {
     background-color: rgba(127, 255, 212, 0.6);
     border-radius: 10px;
     margin-left: 10px;
-    
 
     &:hover {
         background-color: rgba(95, 202, 166, 0.8);
@@ -53,7 +52,6 @@ button {
     background-color: rgba(255, 255, 255, 0);
     border: 1px solid rgb(209, 193, 250);
     border-radius: 50%;
-    font-size: 1.4rem;
     margin-left: 10px;
     padding: 3px 7px;
 
@@ -74,7 +72,7 @@ button {
 //     margin: 15px;
 //     padding: 10px;
 // }
-.wrap { 
+.wrap {
     display: flex;
     justify-items: center;
     align-items: center;
@@ -83,19 +81,19 @@ button {
     border-radius: 10px;
     padding-bottom: 4px;
 }
-.wrap-input { 
+.wrap-input {
     display: flex;
     justify-content: center;
 }
-.container { 
+.container {
     width: 680px;
 }
-.entry-area { 
+.entry-area {
     position: relative;
     height: 70px;
     line-height: 70px;
 }
-input { 
+input {
     position: absolute;
     width: 100%;
     outline: none;
@@ -103,13 +101,13 @@ input {
     padding: 0 30px;
     line-height: 70px;
     border-radius: 10px;
-    border: 4px solid rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
     background: transparent;
     transition: 0.1s ease;
     z-index: 1111;
     display: flex;
 }
-.label-line { 
+.label-line {
     position: absolute;
     font-size: 1.6em;
     color: #ffffff;
@@ -118,13 +116,13 @@ input {
     background-color: var(--main-backgound);
     transition: 0.2s ease;
 }
-input:focus, 
-input:valid { 
-    color: rgb(234, 226, 255);
-    border: 4px, solid, rgb(234, 226, 255);
+input:focus,
+input:valid {
+    color: rgb(34, 34, 34);
+    border: 3px, solid, rgb(234, 226, 255);
 }
-input:focus +.label-line, 
-input:valid +.label-line { 
+input:focus + .label-line,
+input:valid + .label-line {
     color: white;
     height: 30px;
     line-height: 30px;
@@ -158,7 +156,7 @@ li {
     flex: 1;
     text-decoration: none;
 
-    &:hover { 
+    &:hover {
         cursor: pointer;
     }
 }
@@ -167,13 +165,50 @@ li {
     flex: 1;
     text-decoration: line-through;
 
-    &:hover{ 
+    &:hover {
         cursor: pointer;
     }
 }
 
 @media only screen and (max-width: 600px) {
-   .input-bar { 
-    max-width: 250px;
-   }
-  }
+    h1 {
+        font-size: 3rem;
+    }
+    button {
+        font-size: 1.3rem;
+    }
+    .label-line {
+        font-size: 1.4rem;
+    }
+    input, li { 
+        font-size: 1.6rem;
+    }
+
+    input:focus + .label-line,
+    input:valid + .label-line {
+        transform: translate(-20px, -16px) scale(0.88);
+    }
+    .wrap {
+        width: 250px;
+    }
+    .entry-area {
+        width: 300px;
+    }
+    .input-bar {
+        max-width: 240px;
+    }
+    .move-button {
+        margin-left: 10px;
+        img {
+            height: 25px;
+        }
+    }
+    .delete-button {
+        margin-left: 10px;
+        margin-top: 5px;
+        padding: 0;
+        img {
+            height: 25px;
+        }
+    }
+}
