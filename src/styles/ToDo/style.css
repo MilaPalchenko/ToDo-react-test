@@ -1,0 +1,176 @@
+:root {
+  --main-backgound: rgb(184, 175, 206);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+}
+
+body {
+  background-color: var(--main-backgound);
+}
+
+.to-do-list {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 {
+  color: var(--white);
+  font-size: 4rem;
+  margin: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.5s ease;
+}
+
+.add-button {
+  background-color: rgba(127, 255, 212, 0.6);
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.add-button:hover {
+  background-color: rgba(95, 202, 166, 0.8);
+}
+
+.delete-button {
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 1.4rem;
+  margin-top: 2px;
+  margin-left: 10px;
+  padding: 10px 12px;
+}
+.delete-button:hover {
+  background-color: rgba(255, 154, 154, 0.199);
+}
+
+.move-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgb(209, 193, 250);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  padding: 3px 7px;
+}
+.move-button:hover {
+  background-color: rgb(209, 193, 250);
+}
+.move-button img {
+  margin-top: 2px;
+}
+
+.wrap {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background: var(--main-backgound);
+  width: 680px;
+  border-radius: 10px;
+  padding-bottom: 4px;
+}
+
+.wrap-input {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 680px;
+}
+
+.entry-area {
+  position: relative;
+  height: 70px;
+  line-height: 70px;
+}
+
+input {
+  position: absolute;
+  width: 100%;
+  outline: none;
+  font-size: 2.2em;
+  padding: 0 30px;
+  line-height: 70px;
+  border-radius: 10px;
+  border: 4px solid rgb(255, 255, 255);
+  background: transparent;
+  transition: 0.1s ease;
+  z-index: 1111;
+  display: flex;
+}
+
+.label-line {
+  position: absolute;
+  font-size: 1.6em;
+  color: #ffffff;
+  padding: 3px 25px;
+  margin: 0 20px;
+  background-color: var(--main-backgound);
+  transition: 0.2s ease;
+}
+
+input:focus,
+input:valid {
+  color: rgb(234, 226, 255);
+  border: 4px, solid, rgb(234, 226, 255);
+}
+
+input:focus + .label-line,
+input:valid + .label-line {
+  color: white;
+  height: 30px;
+  line-height: 30px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 1111;
+}
+
+ol {
+  margin: 0 auto;
+  padding: 0;
+}
+
+li {
+  align-items: center;
+  color: rgb(71, 71, 71);
+  background-color: rgb(234, 226, 255);
+  border: 3px solid rgb(209, 193, 250);
+  border-radius: 10px;
+  display: flex;
+  font-size: 2rem;
+  margin: 15px;
+  padding: 15px;
+}
+
+.text {
+  /* makes take this specifil element as much as possible
+  stands for 3 properties
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0% */
+  flex: 1;
+  text-decoration: none;
+}
+.text:hover {
+  cursor: pointer;
+}
+
+.crossed-text {
+  flex: 1;
+  text-decoration: line-through;
+}
+.crossed-text:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-bar {
+    max-width: 250px;
+  }
+}/*# sourceMappingURL=style.css.map */
