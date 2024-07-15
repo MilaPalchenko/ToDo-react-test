@@ -73,13 +73,13 @@ button {
 //     padding: 10px;
 // }
 .wrap {
-    display: flex;
-    justify-items: center;
     align-items: center;
     background: var(--main-backgound);
-    width: 680px;
     border-radius: 10px;
+    display: flex;
+    justify-items: center;
     padding-bottom: 4px;
+    width: 680px;
 }
 .wrap-input {
     display: flex;
@@ -89,37 +89,37 @@ button {
     width: 680px;
 }
 .entry-area {
-    position: relative;
     height: 70px;
     line-height: 70px;
+    position: relative;
 }
 input {
-    position: absolute;
-    width: 100%;
-    outline: none;
-    font-size: 2.2em;
-    padding: 0 30px;
-    line-height: 70px;
-    border-radius: 10px;
-    border: 3px solid rgb(255, 255, 255);
     background: transparent;
-    transition: 0.1s ease;
-    z-index: 1111;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 10px;
     display: flex;
+    font-size: 2.2em;
+    line-height: 70px;
+    outline: none;
+    padding: 0 30px;
+    position: absolute;
+    transition: 0.1s ease;
+    width: 100%;
+    z-index: 1111;
 }
 .label-line {
-    position: absolute;
-    font-size: 1.6em;
-    color: #ffffff;
-    padding: 3px 25px;
-    margin: 0 20px;
     background-color: var(--main-backgound);
+    color: #ffffff;
+    font-size: 1.6em;
+    margin: 0 20px;
+    padding: 3px 25px;
+    position: absolute;
     transition: 0.2s ease;
 }
 input:focus,
 input:valid {
-    color: rgb(34, 34, 34);
     border: 3px, solid, rgb(234, 226, 255);
+    color: rgb(255, 255, 255);
 }
 input:focus + .label-line,
 input:valid + .label-line {
@@ -137,7 +137,7 @@ ol {
 
 li {
     align-items: center;
-    color: rgb(71, 71, 71);
+    color: rgba(57, 24, 97, 0.774);
     background-color: rgb(234, 226, 255);
     border: 3px solid rgb(209, 193, 250);
     border-radius: 10px;
