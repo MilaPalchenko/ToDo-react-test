@@ -15,6 +15,13 @@ h1 {
     font-size: 4rem;
     margin: 20px;
 }
+
+ol { 
+    margin: 0 auto;
+    padding: 0;
+    width: 815px;
+}
+
 button {
     border: none;
     border-radius: 5px;
@@ -64,14 +71,6 @@ button {
     }
 }
 
-// input[type="text"] {
-//     color: rgba(0, 0, 0, 0.582);
-//     border: 2px solid rgba(128, 128, 128, 0.281);
-//     border-radius: 10px;
-//     font-size: 1.6rem;
-//     margin: 15px;
-//     padding: 10px;
-// }
 .wrap {
     align-items: center;
     background: var(--main-backgound);
@@ -79,14 +78,14 @@ button {
     display: flex;
     justify-items: center;
     padding-bottom: 4px;
-    width: 680px;
+    width: 673px;
 }
 .wrap-input {
     display: flex;
     justify-content: center;
 }
 .container {
-    width: 680px;
+    width: 670px;
 }
 .entry-area {
     height: 70px;
@@ -130,11 +129,6 @@ input:valid + .label-line {
     z-index: 1111;
 }
 
-ol {
-    margin: 0 auto;
-    padding: 0;
-}
-
 li {
     align-items: center;
     color: rgba(57, 24, 97, 0.774);
@@ -146,6 +140,14 @@ li {
     margin: 15px;
     padding: 15px;
 }
+.checkbox-mark { 
+    accent-color:rgb(209, 193, 250);
+    outline: 1px auto rgb(209, 193, 250);
+    border-radius: 2px;
+    display: flex;
+    width: 30px;
+    height: 30px;
+}
 
 .text {
     /* makes take this specifil element as much as possible
@@ -154,25 +156,23 @@ li {
     flex-shrink: 1;
     flex-basis: 0% */
     flex: 1;
+    margin-left: 20px;
     text-decoration: none;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .crossed-text {
+    color: rgb(209, 193, 250);
     flex: 1;
+    margin-left: 20px;
     text-decoration: line-through;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 815px) {
     h1 {
         font-size: 3rem;
+    }
+    ol { 
+        width: 380px;
     }
     button {
         font-size: 1.3rem;
@@ -183,13 +183,24 @@ li {
     input, li { 
         font-size: 1.6rem;
     }
+    
 
     input:focus + .label-line,
     input:valid + .label-line {
         transform: translate(-20px, -16px) scale(0.88);
     }
+    .checkbox-mark { 
+        accent-color:rgb(209, 193, 250);
+        display: flex;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
     .wrap {
         width: 250px;
+    }
+    .text { 
+        margin-left: 20px;
     }
     .entry-area {
         width: 300px;

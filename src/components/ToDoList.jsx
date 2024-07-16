@@ -1,129 +1,107 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import '../styles/ToDo/style.css'
-import IconUp from '../assets/arrow-up.png'
-import IconDown from '../assets/arrow-down.png'
-import IconTrashBin from '../assets/red-trash-can-icon.png'
+import TodoItem from './TodoItem';
 
-function ToDoList() {
+function TodoList() {
+    const [task, setTask] = useState([]);
+    const [todo, setTodo] = useState('');
 
-    const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState("");
-
-    function handleInputChange(event) {
-        setNewTask(event.target.value);
-    }
-
-    function holdTaskLocalData(nameClass, item) {
-        localStorage.setItem(nameClass, JSON.stringify([...item]));
-    }
-
-    function addTask() {
-        //trim to prevent new space 
-        if (newTask.trim() !== "") {
-            setTasks(t => [newTask, ...t ]);
-            setNewTask("");
-
-            //update local data
-            localStorage.setItem('tasks', JSON.stringify([newTask, ...tasks]));
+    useEffect(() => {
+        const stored = JSON.parse(localStorage.getItem("todo"));
+        if (stored) {
+            setTask(stored);
         }
+    }, []);
+
+    const updateLocalStorage = (updatedTasks) => {
+        localStorage.setItem("todo", JSON.stringify(updatedTasks));
+        setTask(updatedTasks);
+    };
+
+    const addTodo = () => {
+        if (todo.trim() !== "") {
+            const newTask = {
+                id: Date.now(),
+                task: todo,
+                completed: false
+            };
+            const updatedTasks = ([newTask, ...task]);
+            updateLocalStorage(updatedTasks);
+            setTodo('');
+        }
+    };
+
+    const deleteTask = (id) => {
+        const updatedTasks = task.filter(item => item.id !== id);
+        updateLocalStorage(updatedTasks);
     }
 
-    function deleteTask(index) {
-        const updatedTasks = tasks.filter((_, i) => i !== index);
-        setTasks(updatedTasks);
-        holdTaskLocalData('tasks', updatedTasks);
+    const toggleTodo = (id) => {
+        const updatedTasks = task.map((item) =>
+            item.id === id ? { ...item, completed: !item.completed } : item);
+        updateLocalStorage(updatedTasks);
     }
 
-    function moveTaskUp(index) {
+    const moveTaskUp = (index) => {
         if (index > 0) {
-            const updatedTasks = [...tasks];
+            const updatedTasks = [...task];
             // "math" formula to switch two var/const parameters
-            [updatedTasks[index], updatedTasks[index - 1]] = [updatedTasks[index - 1], updatedTasks[index]];
-            setTasks(updatedTasks);
-            holdTaskLocalData('tasks', updatedTasks);
+            [updatedTasks[index], updatedTasks[index - 1]] 
+            = [updatedTasks[index - 1], updatedTasks[index]];
+            updateLocalStorage(updatedTasks);
         }
     }
 
     function moveTaskDown(index) {
-        if (index < tasks.length - 1) {
-            const updatedTasks = [...tasks];
-            [updatedTasks[index], updatedTasks[index + 1]] = [updatedTasks[index + 1], updatedTasks[index]];
-            setTasks(updatedTasks);
-            holdTaskLocalData('tasks', updatedTasks);
+        if (index < task.length - 1) {
+            const updatedTasks = [...task];
+            [updatedTasks[index], updatedTasks[index + 1]] 
+            = [updatedTasks[index + 1], updatedTasks[index]];
+            updateLocalStorage(updatedTasks);
         }
     }
 
-
-    // const handleClick = (event) => { 
-    //     if(event.target.style.textDecoration){ 
-    //         event.target.style.removeProperty('text-decoration');
-    //     }else { 
-    //         event.target.style.setProperty('text-decoration', 'line-through');
-    //     }  
-    // }
-
-    //figure this out more detailed
-    React.useEffect(() => {
-        const storedTodos = localStorage.getItem('tasks');
-        if (storedTodos) {
-            setTasks(JSON.parse(storedTodos));
-        }
-    }, []);
-
-    return (<div className='to-do-list'>
-
-        <h1>To-Do-List</h1>
-        <div>
-            <div className="wrap-input">
-                <div className="wrap">
-                    <div className="container">
-                        <div className="entry-area">
-                            <input type="text"
-                                required
-                                // placeholder="Enter a task..."
-                                value={newTask}
-                                onChange={handleInputChange}
-                                className='input-bar'
-                            />
-                            <div className="label-line">Enter your task</div>
+    return (
+        <div className='to-do-list'>
+            <h1>To-Do-List</h1>
+            <div>
+                <div className="wrap-input">
+                    <div className="wrap">
+                        <div className="container">
+                            <div className="entry-area">
+                                <input
+                                    className='input-bar'
+                                    onChange={e => setTodo(e.target.value)}
+                                    required
+                                    type='text'
+                                    value={todo}
+                                />
+                                <div className="label-line">
+                                    Enter your task
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <button
+                        className="add-button"
+                        onClick={addTodo}>
+                        Add
+                    </button>
                 </div>
-                <button
-                    className="add-button"
-                    onClick={addTask}>
-                    Add
-                </button>
+                <ol>
+                    {task.map((item,index)=> (
+                        <TodoItem
+                            key={item.id}
+                            item={item}
+                            onDelete={deleteTask}
+                            onToggle={toggleTodo}
+                            onUp={(() => moveTaskUp(index))}
+                            onDown={(() => moveTaskDown(index))}
+                        />
+                    ))}
+                </ol>
             </div>
-            <ol>
-                {tasks.map((task, index) =>
-                    <li key={index}>
-                        <span className='text'
-                        // onClick={handleClick}
-                        >
-                            {task}
-                        </span>
-
-                        <button className="move-button"
-                            onClick={() => moveTaskUp(index)}>
-                            <img src={IconUp} alt=""
-                                height="40px" />
-                        </button>
-                        <button className="move-button"
-                            onClick={() => moveTaskDown(index)}>
-                            <img src={IconDown} alt=""
-                                height="40px"
-                            />
-                        </button>
-                        <button className="delete-button"
-                            onClick={() => deleteTask(index)}>
-                            <img src={IconTrashBin} alt=""
-                                height="30px" />
-                        </button>
-                    </li>)}
-            </ol>
         </div>
-    </div>);
+    );
 }
-
-export default ToDoList
+export default TodoList;

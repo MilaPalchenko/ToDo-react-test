@@ -20,6 +20,12 @@ h1 {
   margin: 20px;
 }
 
+ol {
+  margin: 0 auto;
+  padding: 0;
+  width: 815px;
+}
+
 button {
   border: none;
   border-radius: 5px;
@@ -72,7 +78,7 @@ button {
   display: flex;
   justify-items: center;
   padding-bottom: 4px;
-  width: 680px;
+  width: 673px;
 }
 
 .wrap-input {
@@ -81,7 +87,7 @@ button {
 }
 
 .container {
-  width: 680px;
+  width: 670px;
 }
 
 .entry-area {
@@ -130,11 +136,6 @@ input:valid + .label-line {
   z-index: 1111;
 }
 
-ol {
-  margin: 0 auto;
-  padding: 0;
-}
-
 li {
   align-items: center;
   color: rgba(57, 24, 97, 0.774);
@@ -147,6 +148,15 @@ li {
   padding: 15px;
 }
 
+.checkbox-mark {
+  accent-color: rgb(209, 193, 250);
+  outline: 1px auto rgb(209, 193, 250);
+  border-radius: 2px;
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
+
 .text {
   /* makes take this specifil element as much as possible
   stands for 3 properties
@@ -154,23 +164,23 @@ li {
   flex-shrink: 1;
   flex-basis: 0% */
   flex: 1;
+  margin-left: 20px;
   text-decoration: none;
-}
-.text:hover {
-  cursor: pointer;
 }
 
 .crossed-text {
+  color: rgb(209, 193, 250);
   flex: 1;
+  margin-left: 20px;
   text-decoration: line-through;
 }
-.crossed-text:hover {
-  cursor: pointer;
-}
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 815px) {
   h1 {
     font-size: 3rem;
+  }
+  ol {
+    width: 380px;
   }
   button {
     font-size: 1.3rem;
@@ -185,8 +195,18 @@ li {
   input:valid + .label-line {
     transform: translate(-20px, -16px) scale(0.88);
   }
+  .checkbox-mark {
+    accent-color: rgb(209, 193, 250);
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
   .wrap {
     width: 250px;
+  }
+  .text {
+    margin-left: 20px;
   }
   .entry-area {
     width: 300px;
